@@ -1,11 +1,9 @@
-//2013 Dequin Sun, Yin Liu, Manuela Donoso, Crys Moore
-//Capacitive Sensing as a simple on/off switch
-//
 //ARDUINO CODE 				
 int counter; 					
 int finger =0; 					
 int savedTime;
-int led = 13;					
+int led = 13;
+int calibration = 15;					
 
 void setup() { 					
 
@@ -30,12 +28,12 @@ void loop()
  // Serial.println(counter); 				
 
 
-  if(counter > 15) { 				
+  if(counter > calibration) { 				
     finger =1; 					
     savedTime=millis();
      digitalWrite(led,LOW); 
          Serial.println(finger); 				
-				
+
  				
   } 					
 
@@ -45,10 +43,9 @@ void loop()
     finger=0; 
       digitalWrite(led,HIGH); 
           Serial.println(finger); 				
-				
-					
+
+
   }
-					
 
-} 					
 
+} 
