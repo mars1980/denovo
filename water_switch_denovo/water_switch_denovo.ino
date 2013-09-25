@@ -1,3 +1,6 @@
+//2013 Dequin Sun, Yin Liu, Manuela Donoso, Crys Moore
+//Capacitive Sensing as a simple on/off switch
+//
 //ARDUINO CODE 				
 int counter; 					
 int finger =0; 					

@@ -1,3 +1,12 @@
+/**
+ * Boid class for Processing,
+ * Nicolas Liautaud 2009
+ * <br/>
+ * Used by BoidsFlock class
+ ------------------------------
+ 2013 - Manuela Donoso, Crys Moore, Ricardo Dodds. 
+ */
+
 import hypermedia.video.*;
 import processing.video.*;
 import java.awt.*;
