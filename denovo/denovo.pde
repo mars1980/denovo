@@ -4,7 +4,12 @@
  * <br/>
  * Used by BoidsFlock class
  ------------------------------
- 2013 - Manuela Donoso, Crys Moore, Ricardo Dodds. 
+ * 2013 - Manuela Donoso, Crys Moore, Ricardo Dodds
+ * using Open CV blob detection and Arduino Cap Sensing
+ ------------------------------
+ works with Processing 1.5.1
+ on OSX 10.8.4
+ ------------------------------
  */
 
 import hypermedia.video.*;
@@ -33,17 +38,21 @@ int finger;
 void setup()
 {
   // canvas
-  size(600, 300);
+  size(600, 150);
   smooth();
+ String[] cameras = Capture.list();
+//println(cameras);
   
   savedTime = 0;
   opencv = new OpenCV(this);
 //  opencv.allocate(320, 240);
-  opencv.capture(320, 240);
+  opencv.capture(320, 240,4);
   
   //ARDUINO
   //DON'T FORGET TO CHOOSE CORRECT SERIAL PORT
   String portName = Serial.list()[4];
+  //println(Serial.list());
+
   myPort = new Serial(this, portName, 9600);
   myPort.bufferUntil('\n');  //this is important!!! otherwise we get 1 and 0s unstable
 
@@ -54,7 +63,7 @@ void setup()
   foodAuraFactor = 3;
   // initialize boids
   boids = new BoidsFlock();
-  boidsNbr = 500;
+  boidsNbr = 50;
 
   // create foods
   for (int i=0; i < foodNbr; i++)
@@ -117,7 +126,7 @@ void draw()
 
   // compute
   boids.update(blobs);
-       println(finger);
+//       println(finger);
 
 }
 

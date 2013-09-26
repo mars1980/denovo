@@ -36,7 +36,7 @@ class BoidsFlock
     cohesion = 10;
     avoidance = 10;
     imitation = 10;
-    size = 6;
+    size = 2;
     aura = 3 * size;
     perception = 10 * size;
     speedLimit = 0;
