@@ -1,16 +1,14 @@
-//ARDUINO CODE 				
 int counter; 					
 int finger =0; 					
 int savedTime;
-int led = 13;
-int calibration = 15;					
+int led = 13;					
 
 void setup() { 					
-
+  Serial.begin(9600); 
   pinMode(2, OUTPUT);  				
   pinMode(7,INPUT); //all pins are actually in default input pins 
   pinMode(led,OUTPUT);		
-  Serial.begin(9600);  				
+   				
 
 } 					
 void loop() 					
@@ -28,24 +26,23 @@ void loop()
  // Serial.println(counter); 				
 
 
-  if(counter > calibration) { 				
+  if(counter > 15) { 				
     finger =1; 					
     savedTime=millis();
-     digitalWrite(led,LOW); 
-         Serial.println(finger); 				
-
- 				
+    digitalWrite(led,HIGH); 
+    Serial.println(finger); 				
+				
   } 					
 
   int passedTime=millis()-savedTime; 			
   if (passedTime>200)  //as soon as finger turn 1, it will stay 1 for the next 50 milliseconds
   { 					
     finger=0; 
-      digitalWrite(led,HIGH); 
-          Serial.println(finger); 				
+    digitalWrite(led,LOW); 
+    Serial.println(finger); 				
 
 
   }
 
 
-} 
+}
