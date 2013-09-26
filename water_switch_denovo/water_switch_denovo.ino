@@ -1,7 +1,20 @@
+//Arduino Version 1.0.3
+//works w/ Processing sketch 'denovo'
+//Dequin Sun, Yin Liu, Manuela Donoso, Crys Moore 2013
+//circuit diagram:
+//DIGITAL 7 ------------+
+//                      |--------OBJECT
+//                      |
+//                     [R=1Mohm]
+//                      |
+//                      |
+//DIGITAL 2 ------------+
+
 int counter; 					
 int finger =0; 					
 int savedTime;
-int led = 13;					
+int led = 13;
+int calibration =15;					
 
 void setup() { 					
   Serial.begin(9600); 
@@ -20,18 +33,15 @@ void loop()
     //pin 7 is catching up on the signal becoz human body is a capacitor 	
     counter++; 					
   }; 					
-
   digitalWrite(2,LOW);
   delay(10); 					
  // Serial.println(counter); 				
-
-
-  if(counter > 15) { 				
+  if(counter > calibration) 
+  { 				
     finger =1; 					
     savedTime=millis();
     digitalWrite(led,HIGH); 
-    Serial.println(finger); 				
-				
+    Serial.println(finger); 							
   } 					
 
   int passedTime=millis()-savedTime; 			
@@ -40,9 +50,5 @@ void loop()
     finger=0; 
     digitalWrite(led,LOW); 
     Serial.println(finger); 				
-
-
   }
-
-
 }
